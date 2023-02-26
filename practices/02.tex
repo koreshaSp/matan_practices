@@ -44,10 +44,17 @@
 \end{crly}
 \begin{proof}
     \begin{gather*} 
-        f(\Omega) \sqcup \left( f(\partial \Omega) \setminus f(\Omega) \right) = f(\Omega) \cup f(\partial \Omega) = f(\overline{\Omega}) = \overline{f(\Omega)} = \operatorname*{int} \overline{f(\Omega)} \sqcup \partial \overline{f(\Omega)} \\ 
-        f(\Omega) \sqcup \left( f(\partial \Omega) \setminus f(\Omega) \right) = \operatorname*{int} \overline{f(\Omega)} \sqcup \partial \overline{f(\Omega)}\\ 
-        f(\Omega) \subset \operatorname{int}\overline{f(\Omega)} \then \partial \overline{f(\Omega)} \subset f(\partial \Omega) \setminus f(\Omega)
+		f(\overline{\Omega}) = f(\Omega) \cup f(\partial \Omega) = f(\Omega) \sqcup \left( f(\partial \Omega) \setminus f(\Omega) \right) \\
+        \overline{f(\Omega)} = \operatorname*{int} \overline{f(\Omega)} \sqcup \partial \overline{f(\Omega)}
     \end{gather*}
+	Здесь $\operatorname*{int}A$ это множество внутренних точек $A$.
+
+	По предыдущему утверждению имеем что $f(\overline{\Omega}) = \overline{f(\Omega)}$, тогда:
+
+	\begin{gather*}
+		f(\Omega) \sqcup \left( f(\partial \Omega) \setminus f(\Omega) \right) = \operatorname*{int} \overline{f(\Omega)} \sqcup \partial \overline{f(\Omega)}\\ 
+        f(\Omega) \subset \operatorname{int}\overline{f(\Omega)} \then \partial \overline{f(\Omega)} \subset f(\partial \Omega) \setminus f(\Omega)
+	\end{gather*}
 \end{proof}
 
 \begin{exmpl}[для понимания предыдущего следствия]
@@ -63,11 +70,11 @@
 \begin{remrk}
     Обозначение: $\widehat{\CC} = \CC \cup \{\infty\}$
 \end{remrk}
-\begin{prop} [функция Жуковского]
+\begin{df} [функция Жуковского]
     $f: \widehat{\CC} \to \widehat{\CC}$
     $$f(z) = \frac{1}{2}\left( z + \frac{1}{z} \right)$$
     $f(0) = f(\infty) = \infty$
-\end{prop}
+\end{df}
 \begin{exmpl}
     $f\left(\{|z| < 1\}\right) = ?$
 
@@ -116,7 +123,7 @@
     \begin{itemize}
         \item $\forall \; w \in \CC \; \exists z \in \CC : \; \cfrac{1}{2}\left( z + \cfrac{1}{z} \right) = w$, кроме того, $\cfrac{1}{z}$ --- тоже решение
         \item $\frac{1}{2}\left( z + \frac{1}{z} \right) = x \in \R \then \overline{z}, \cfrac{1}{\overline{z}}$ --- тоже решения
-        \item $\forall z \begin{cases}z \in \R \\ \operatorname{Im} z > 0 \textrm{ или } \operatorname{Im} \cfrac{1}{z} > 0 \end{cases}$
+        \item $\forall z \Rightarrow \begin{cases}z \in \R \\ \operatorname{Im} z > 0 \textrm{ или } \operatorname{Im} \cfrac{1}{z} > 0 \end{cases}$
         \item Пусть $\frac{1}{2}\left( z + \frac{1}{z} \right) = w \notin \R \then \begin{cases}
             z \notin \R \\
             z \in \CC_+ \textrm{ или } \cfrac{1}{z} \in \CC_+ 

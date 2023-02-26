@@ -1,0 +1,128 @@
+% practise 2
+\section{Практика 2}
+\begin{df}[аналитическая функция]
+    $f: \Omega \to \CC$ --- аналитическая, если 
+    \[\forall \; z_0 \in \Omega \; \exists \lim\limits_{z \to z_0} \frac{f(z) - f(z_0)}{z - z_0}=f'(z_0)\]
+\end{df}
+
+\begin{exmpl}
+    $f = \operatorname{Re}{z}, \; f: x + i y \mapsto x, \; x, y \in \R$ --- не аналитическая в $\CC$
+    \begin{gather*}
+        \exists? \; \lim\limits_{z \to 0}\frac{\operatorname{Re}{z}}{z}: \\ 
+        z = iy \leadsto \lim\limits_{z \to 0}\frac{\operatorname{Re}{z}}{z} = 0 \\
+        z = x \leadsto \lim\limits_{z \to 0} \frac{\operatorname{Re}{z}}{z} = 1 \\
+        \then \operatorname{Re}{z} \textrm{ --- не аналитическая}
+    \end{gather*}
+    Аналогично, $\overline{z}, \overline{z}^2, \dots$ --- не аналитические функции
+\end{exmpl}
+
+\begin{exmpl}[аналитические функции] \hfill\newline
+    \begin{itemize} 
+        \item $z, z^k$ в $\CC \setminus \{0\} \; \forall \; k \in \Z$
+        \item $e^z = \sum\limits_{0}^{\infty}\cfrac{z^k}{k!}$
+        \item $\sin z = \cfrac{e^{iz}-e^{-iz}}{2i}$
+    \end{itemize}
+\end{exmpl}
+
+\begin{claim}
+    $f: \Omega \to \CC$ --- аналитическая $\then f$ --- открытое отображение. То есть $\forall \; U \subset \Omega$ --- открытое $\then f(U)$ --- открытое
+\end{claim}
+
+\begin{crly}
+    $\exists z_0 \in \Omega: |f(z_0)| \geq |f(z)| \; \forall \; z \in \Omega \then f \equiv const$
+    % Если у функции есть максимум - она константа (так как иначе была бы предельная точка)
+\end{crly}
+
+\begin{claim}
+    Пусть $f: \Omega \to \CC$ --- аналитическая и $f \in C(\overline{\Omega})$. Тогда $f(\overline{\Omega}) = \overline{f(\Omega)}$
+
+    Здесь замыкание рассматривается в $\CC \cup \{\infty\}$
+\end{claim}
+
+\begin{crly}[в условиях предыдущего факта]
+    $\partial \overline{f(\Omega)} \subset f(\partial \Omega) \setminus f(\Omega)$
+\end{crly}
+\begin{proof}
+    \begin{gather*} 
+        f(\Omega) \sqcup \left( f(\partial \Omega) \setminus f(\Omega) \right) = f(\Omega) \cup f(\partial \Omega) = f(\overline{\Omega}) = \overline{f(\Omega)} = \operatorname*{int} \overline{f(\Omega)} \sqcup \partial \overline{f(\Omega)} \\ 
+        f(\Omega) \sqcup \left( f(\partial \Omega) \setminus f(\Omega) \right) = \operatorname*{int} \overline{f(\Omega)} \sqcup \partial \overline{f(\Omega)}\\ 
+        f(\Omega) \subset \operatorname{int}\overline{f(\Omega)} \then \partial \overline{f(\Omega)} \subset f(\partial \Omega) \setminus f(\Omega)
+    \end{gather*}
+\end{proof}
+
+\begin{exmpl}[для понимания предыдущего следствия]
+    Рассмотрим открытый шар без точки:
+    \begin{align*}
+        \Omega = \{0 < |z| < 1\} \\ 
+        \overline{\Omega} = \{|z| \leq 1\} \\ 
+        \partial \overline{\Omega} = \{|z| = 1\} \\ 
+        \partial \Omega = \{0\} \cup \{|z| = 1\} \\ 
+        \partial \Omega \setminus \Omega = \partial \Omega = \{0\} \cup \{|z| = 1\}
+    \end{align*}
+\end{exmpl}
+\begin{remrk}
+    Обозначение: $\widehat{\CC} = \CC \cup \{\infty\}$
+\end{remrk}
+\begin{prop} [функция Жуковского]
+    $f: \widehat{\CC} \to \widehat{\CC}$
+    $$f(z) = \frac{1}{2}\left( z + \frac{1}{z} \right)$$
+    $f(0) = f(\infty) = \infty$
+\end{prop}
+\begin{exmpl}
+    $f\left(\{|z| < 1\}\right) = ?$
+
+    Поймем, куда переходит граница $\{|z| = 1\} = \{e^{it}, t \in \R\}$
+
+    $$\frac{1}{2}\left( e^{it} + e^{-it} \right) = \cos t \then f\left( \{|z| = 1\} \right) = [-1, 1]$$
+
+    Гипотеза: $f\left( \{|z| < 1\} \right) = \CC \setminus [-1, 1]$
+    \begin{align*}
+        f\left( \{|z| < 1\} \right) \subset \CC \setminus [-1, 1] \\ 
+        \textrm{Утверждается, что } |z| \leq 1 \textrm{ и } \frac{z + \frac{1}{z}}{2} = x_0 \in [-1, 1] \then |z| = 1\\
+        \textrm{Действительно: } \left( \frac{z + \frac{1}{z}}{2} \right)^2 = \frac{z^2 + \frac{1}{z^2} + 2}{4} \in [0, 1] \then z^2 + \frac{1}{z^2} \in [-2, 2] \\
+        \then \frac{z^2 + \frac{1}{z^2}}{2} \in [-1, 1]
+    \end{align*}
+    Если $|z| \neq 1$, то итерациями прийдем к противоречию (если $|z| \neq 1$, то $z^k$ или $\frac{1}{z^k}$ для некоторого $k$ станут очень большими). Значит $f(z) \in [-1, 1] \then |z| = 1$
+    
+    Еще один вариант доказательства:
+    \begin{align*}
+        f\left( \{|z| < 1\} \right) \subset \CC \setminus [-1, 1] \\ 
+        \textrm{Пусть } x_0 = \frac{z + \frac{1}{z}}{2} \textrm{, где } z = x + iy\\
+        \textrm{Рассмотрим }\operatorname{Im} x_0 = \operatorname{Im} \left( \frac{z + \frac{1}{z}}{2} \right) = \frac{\operatorname{Im}(x + i y) + \operatorname{Im} \left( \frac{x - iy}{(x + i y)\cdot (x - iy)} \right)}{2} = \\
+        =\frac{y + \frac{-y}{x^2 + y^2}}{2} = 0 \then y = 0 \textrm{ или } x^2 + y^2 = 1\\
+        \underbrace{1 \leq \bigg|\frac{x + \frac{1}{x}}{2}\bigg|}_{\textrm{Коши}} = \underbrace{|x_0| \leq 1}_{\substack{\textrm{т.к. хотим } \\ x_0 \in [-1, 1]}} \then x = \pm 1
+    \end{align*}
+    \begin{align*}
+        f(\{|z| < 1\}) \supset \CC \setminus [-1, 1]\\
+        \forall \; z \in \CC \setminus [-1, 1], \; z \textrm{ --- это образ }f(w) \textrm{ для некоторого } w\in\mathbb{D}=\{|z| < 1\} \\ 
+        \textrm{Действительно, } \exists\; z_0: f(z_0) = w \textrm{ (у квадратного уравнения есть корень)}\\
+        \frac{1}{2}(z_0 + \frac{1}{z_0}) = w, \; z_0 \notin \{|z| = 1\} \textrm{, иначе } f(z_0) \in [-1, 1] \\
+        |z_0| \textrm{ или } \frac{1}{|z_0|} < 1 \then z_0 \textrm{ или }   \frac{1}{z_0} \in \{|z| < 1\} \\ 
+        \textrm{но } f(z_0) = f(\frac{1}{z_0}) \then w \in f\left( \{|z| < 1\} \right)
+    \end{align*}
+    Таким образом, $f(\mathbb{D}) = \widehat{\CC}\setminus[-1, 1]$
+\end{exmpl}
+\begin{remrk}
+    Обозначение: $\CC_+ = \{\operatorname{Im}z > 0\}$
+\end{remrk}
+\begin{exmpl}
+    $f(\CC_+) = ?$
+
+    Поймем, куда переходит граница:
+    \begin{align*}
+        f(\R) = (-\infty, -1] \cup [1, +\infty)\\
+    \end{align*}
+    Гипотеза: $f(\CC_+) = \CC \setminus (-\infty, -1] \cup [1, +\infty)$
+    \begin{itemize}
+        \item $\forall \; w \in \CC \; \exists z \in \CC : \; \cfrac{1}{2}\left( z + \cfrac{1}{z} \right) = w$, кроме того, $\cfrac{1}{z}$ --- тоже решение
+        \item $\frac{1}{2}\left( z + \frac{1}{z} \right) = x \in \R \then \overline{z}, \cfrac{1}{\overline{z}}$ --- тоже решения
+        \item $\forall z \begin{cases}z \in \R \\ \operatorname{Im} z > 0 \textrm{ или } \operatorname{Im} \cfrac{1}{z} > 0 \end{cases}$
+        \item Пусть $\frac{1}{2}\left( z + \frac{1}{z} \right) = w \notin \R \then \begin{cases}
+            z \notin \R \\
+            z \in \CC_+ \textrm{ или } \cfrac{1}{z} \in \CC_+ 
+        \end{cases} \then \CC \setminus \R \subset f(\CC_+)$
+        \item $z = x + i y, \; y > 0$ и $f(z) \in \R \iff \cfrac{\left( y - \frac{y}{x^2 + y^2} \right)}{2} = 0 \iff x^2 + y^2 = 1 \iff \\ \iff z \in \left( \{|z| = 1\} \cap \CC_+\right)$
+            $$f(\CC_+ \cap \{|z| = 1\}) = \bigg\{\cfrac{e^{it}+e^{-it}}{2}\bigg| t \in (0, \pi)\bigg\} = (-1, 1)$$
+            $\then f(\CC_+) \subset \CC \setminus (-\infty, -1] \cup [1, +\infty)$
+    \end{itemize}
+\end{exmpl}

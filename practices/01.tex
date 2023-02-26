@@ -1,0 +1,101 @@
+% practise 1
+
+\section{Практика 1}
+\begin{remrk} \hfill \newline
+    $ x, y \in \mathbb{R}, r \geq 0, \varphi \in [0, 2\pi)$
+    \begin{enumerate}
+        \item $z = x + iy = r \cdot e^{i \varphi} = r(\cos \varphi + i \sin \varphi)$
+        \item $x = \operatorname{Re} z, y = \operatorname{Im} z, $
+        \item $\operatorname{Re} e^{i \varphi} = \cos \varphi, \operatorname{Im} e^{i \varphi} = \sin \varphi$
+        \item $i = e^{\frac{i\pi}{2}}, i^2 = -1$
+        \item $|z_1+ z_2|^2 = |z_1|^2 + |z_2|^2 + 2\operatorname{Re}(z_1 \overline{z_2})$
+        \item $\operatorname{Re} \cfrac{z_1}{z_2} = \operatorname{Re} \cfrac{z_1\overline{z_2}}{|z_2|^2}$
+    \end{enumerate}
+\end{remrk}
+
+
+\begin{problem*} [нарисовать множества] \hfill \newline
+    \begin{itemize}
+        \item $\Omega = \{z \in \mathbb{C}: \frac{1}{2} < |z| < 1\}$
+        \item $\Omega = \{z \in \mathbb{C}: \operatorname{Re} z \in (a, b)\}$
+        \item $\Omega = \{z \in \mathbb{C}: \operatorname{Im}(z^2) > 0\}$
+        \item $\Omega = \{z \in \mathbb{C}: z^8 = 256\}$
+        \item $\Omega = \{z= \cos\varphi + i \sin \varphi,\varphi\in [\cfrac{\pi}{2}, \cfrac{3\pi}{2}]\}$
+        \item $\Omega = \{z \in \mathbb{C}: \bigg| \cfrac{z - 4}{z - 8}\bigg| = 1\}$
+    \end{itemize}
+\end{problem*}
+
+\begin{problem*}[доказать равенства] \hfill \newline
+    \begin{enumerate}
+        \item $\xi ^n = 1, \xi \neq 1\then 1 + 2\xi + 3\xi^2 + \dots + n\xi^{n - 1} = \cfrac{n}{\xi - 1}$
+        \item $\operatorname{Re}(\frac{1+ \xi z}{1- \xi z}) \geq 0 \iff |z| \leq 1 (|\xi| = 1)$
+        \item $\cos \theta + \cos 3\theta + \dots + \cos (2n - 1)\theta = \frac{\sin 2n\theta}{2\sin \theta}$
+    \end{enumerate}
+\end{problem*}
+\newpage
+\begin{sol*} \hfill \newline
+    \begin{enumerate}
+        \item 
+        \begin{gather*}
+            \xi ^n = 1, \xi \neq 1\then 1 + 2\xi + 3\xi^2 + \dots + n\xi^{n - 1} = \cfrac{n}{\xi - 1} \\
+            (\xi - 1) (1 + 2\xi + 3\xi^2 + \dots + n\xi^{n - 1}) = n \\
+            - 1 - 2\xi - 3\xi^2 - \dots - n\xi^{n - 1} + \xi + 2 \xi^2 + 3\xi^3 + \dots + n\xi^n = n \\
+            -1 - \xi - \xi^2 - \dots - \xi^{n - 1} + n = n \\
+            \sum\limits_{k = 0}^{n-1}\xi^k = 0 \textrm{ (свойство корня из 1)}
+        \end{gather*}
+        \item 
+        \begin{gather*}
+            \operatorname{Re}\left(\frac{1+ \xi z}{1- \xi z}\right) \geq 0 \iff |z| \leq 1 (|\xi| = 1) \\
+            \textrm{Воспользуемся } \operatorname{Re} \cfrac{z_1}{z_2} = \operatorname{Re} \cfrac{z_1\overline{z_2}}{|z_2|^2} \\
+            \operatorname{Re}\left(\frac{1+ \xi z}{1- \xi z}\right) = \operatorname{Re}\left(\frac{(1 + \xi z)(1 - \overline{\xi z})}{|1- \xi z|^2}\right) = \operatorname{Re} \left(\frac{1 - \overline{\xi z} + \xi z - |\xi z|}{|1 - \xi z| ^2}\right) \\ 
+            \textrm{Заметим, что } - \overline{\xi z} + \xi z \textrm{ не вносит вклад по вещественной оси} \\
+            \textrm{Тогда } \operatorname{Re}\left(\frac{1+ \xi z}{1- \xi z}\right) = \operatorname{Re} \left(\frac{1 - |\xi z|}{|1 - \xi z| ^2}\right)
+        \end{gather*}
+        \item
+        \begin{gather*}
+            \cos \theta + \cos 3\theta + \dots + \cos (2n - 1)\theta = \frac{\sin 2n\theta}{2\sin \theta} \\ 
+            \textrm{Воспользуемся } \cos k\theta = \operatorname{Re} (e^{ik\theta}) = \frac{e^{ik\theta} + e^{-ik\theta}}{2}, \sin k \theta = \operatorname{Im} k\theta = \frac{e^{ik\theta} - e^{-ik\theta}}{2i} \\
+            \frac{e^{i\theta} + e^{-i\theta}}{2} + \frac{e^{3i\theta} + e^{-3i\theta}}{2} + \dots + \frac{e^{(2n-1)i\theta} + e^{-(2n-1)i\theta}}{2} = \frac{e^{2in\theta} - e^{-2in\theta}}{2(e^{i\theta}-e^{-i\theta})} \\ 
+            (e^{2i\theta} - e^{-2i\theta}) + (e^{4i\theta} + e^{-2i\theta} - e^{2i\theta} - e^{-4i\theta}) + \dots + \\ + (e^{2ni\theta} + e^{-(2n-2)i\theta} - e^{(2n-2)i\theta} - e^{-2ni\theta}) = e^{2in\theta} - e^{-2in\theta}\\ 
+        \end{gather*}
+    \end{enumerate}
+\end{sol*}
+
+\begin{problem*}[найти образы множеств при заданных отображениях] \hfill \newline
+Обозначение $\mathbb{C}_+ := \{z \in \mathbb{C} | \operatorname{Im} z > 0\}$
+\begin{enumerate}
+    \item $f(z) = iz,\Omega = \mathbb{C}_+$ %- поворот на $\pi / 2$
+    \item $f(z) = az,a \in \mathbb{C}, \Omega  = \mathbb{C}_+$
+    \item $f(z) = z^3, \Omega = \{z= r\cdot e ^{i\varphi}, \varphi \in (0, \varphi_0)\}$
+    \item $f(z) = e^{iz}, \Omega = \{0 < \operatorname{Re} z < \pi\}$
+    \item $f(z) = e^{iz}, \Omega = \{0 < \operatorname{Re} z < 2\pi\}$
+    \item $f(z) = e^{iz}, \Omega = \{0 < \operatorname{Re} z < 2\pi, \operatorname{Im} z > 0\}$
+    \item $f(z) = \sqrt{z}, \Omega = \mathbb{C} \setminus \mathbb{R}_+$, $\sqrt{re^{i \varphi}} = \sqrt r e^{i \varphi / 2}$
+    \item $f(z) = \cfrac{z- i}{z+ i}, \Omega = \mathbb{C}_+$
+\end{enumerate}
+\end{problem*}
+\begin{sol*} [пункт 8]
+    Будем смотреть, куда переходит граница ($x \in \mathbb{R}$)
+
+    $$\frac{x-i}{x+ i} = \frac{z_1}{z_2} = \frac{z}{\overline z} \then f(\mathbb{R}) \subset \mathbb{T} = \{|z| = 1\}$$
+
+    \noindent Посмотрим на $f(+\infty) = f(-\infty) = 1$
+
+    \noindent Это значит,что мы прошли по окружности
+    \begin{gather*}
+        \frac{z_1 - i}{z_1 + i} = \frac{z_2 - i}{z_2 + i} \then (z_1 - i) (z_2 + i) = (z_2 - i) (z_1 + i) \\ 
+        z_1z_2 - iz_2 + iz_1 + 1 = z_1z_2 + iz_2 - iz_1 + 1 \\
+        -z_2 + z_1 = z_2 - z_1 \then z_1 = z_2 \then \textrm{ отображение инъективно}
+    \end{gather*}
+
+    \noindent Заметим, что $(0, i)$ отображается в 0, тогда, счтиаем, что верхняя полуплоскость переходит в круг, а нижняя - в дополнение. 
+
+    \noindent Так мы угадали ответ, теперь обоснуем: покажем
+    \begin{gather*}
+        \frac{z- i}{z + i} < 1 \iff \operatorname{Im} z > 0 \\
+        |z - i|^2 < |z + i|^2 \iff |z|^2 - 2i\operatorname{Re}(z \overline i) + 1 < |z|^2 + 2Re(z\overline i) + 1 \iff \\
+        \iff 4\operatorname{Re}(z\overline i) > 0 \iff \\
+        [ \textrm{считаем } z = re^{i\theta}] \\
+        \iff \operatorname{Re} (r \cdot e^{i(\theta - \pi / 2)}) = r \cdot \cos (\theta - \pi / 2) = r \cdot \sin \theta > 0
+    \end{gather*}
+\end{sol*}

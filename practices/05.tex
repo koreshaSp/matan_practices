@@ -1,0 +1,107 @@
+\section{Практика 4}
+\subsection{Гармонические функции, условия Коши-Римана}
+
+Пусть $f$ --- аналитическая функция в $\Omega$. $F(x, y) = f(x + iy) = u (x, y) + i \cdot v(x, y)$
+
+\begin{gather*}
+    \underbrace{\lim\limits_{\varepsilon \to 0} \cfrac{f(x_0 + \varepsilon + iy_0) - f(x_0 + iy_0)}{\varepsilon}}_{=F'_x\bigg|_{(x_0, y_0)} = u'_x + iv'_x\bigg|_{(x_0, y_0)}} = \lim\limits_{\varepsilon \to 0} \cfrac{f(x_0 + i(y_0 + \varepsilon)) - f(x_0 + i \cdot y_0)}{i\varepsilon} \\ 
+    \begin{cases}
+        u'_x = v'_y \\ 
+        v'_x = -u'_y
+    \end{cases}
+\end{gather*}
+
+Условия Коши-Римана. Это не только необходимые, но и достаточные условия для того, чтобы $u = \operatorname{Re} f$, $v = \operatorname{Im} f$ для аналитической функции
+
+\begin{df}[оператор Лапласа]
+    $\Delta u = u''_{xx} + u''_{yy}$
+\end{df}
+\begin{df}[гармоническая функция]
+    Пусть $u \in C^2(\Omega \to \CC)$. Тогда $u$ --- гармоническая, если $\Delta u = 0$
+\end{df}
+
+\begin{crly}
+    $forall \; f$ --- аналитической, $u = \operatorname{Re} f$ --- гармоническая
+\end{crly}
+\begin{proof}
+    (если $u \in C^2$) $u''_{xx} + u''_{yy} = v''_{yx} - v''_{xy} = 0$
+\end{proof}
+\begin{claim}
+    Если $\Omega$ --- односвязна, $\Delta u = 0$ для некоторой $u \in C^2(\Omega \to \mathbb{R})$, то $\exists \; f: f$ --- аналитична, $u = \operatorname{Re} f$ 
+\end{claim}
+\begin{exmpl}
+    \begin{enumerate} \hfill \newline
+        \item $u(x, y) = xy$
+        \item $\exists ? \; f: \operatorname{Re} f = u$ (, $f$ --- аналититчна в $\CC$). 
+        \begin{gather*}
+            \Delta u = (xy)''_{xx} + (xy)''_{yy} = 0 + 0 = 0 \\ 
+            \textrm{Ищем }v: 
+            \begin{cases}
+                v'_y = y \\ 
+                v'_x = -x
+            \end{cases} \iff 
+            \begin{cases}
+                v = \frac{y^2}{2} + g(x) \\ 
+                v'_x = -x
+            \end{cases} \iff 
+            \begin{cases}
+                v = \frac{y^2}{2} + g(x) \\ 
+                g'(x) = -x
+            \end{cases} \then \\ 
+            \then v = \frac{y^2}{2} - \frac{x^2}{2} + c \\
+            f = u + iv = xy + i \cdot \left( \frac{y^2}{2} - \frac{x^2}{2} \right) + i \cdot C = -\frac{iz^2}{2} + i \cdot C \textrm{ --- аналитическая}
+        \end{gather*}
+    \end{enumerate}
+\end{exmpl}
+\begin{problem}
+    $u = x^2 + y^2 - 2xy$, $\exists ?f: \operatorname{Re} f = u ?$
+\end{problem}
+\begin{sol} \hfill \newline
+    $\Delta u = 2 + 2 - 0 = 4 \neq 0 \then$ такой $f$ нет
+\end{sol}
+\begin{problem}
+    $u = x^2 - y^2 - 2xy$, $\exists ?f: \operatorname{Re} f = u ?$
+\end{problem}
+\begin{sol} \hfill \newline
+    Знаем, что $f_1 = -\frac{iz^2}{2} \then \operatorname{Re} f_1 = xy$. Найдем $f_2: \operatorname{Re} f_2 = x^2 - y^2$
+    \begin{gather*}
+        \begin{cases}
+            v'_y = u'_x = 2x \\ 
+            v'_x = -u'_y = 2y
+        \end{cases} \then v = 2xy + C  \then f_2 = x^2 - y^2 + i2xy = (x-iy)^2  \then \\ 
+        \then f = 2f_1 + f_2 = -\frac{iz^2}{2} \cdot 2 + z^2 = z^2(1 - i)
+    \end{gather*}
+\end{sol}
+\begin{problem}[Найти аналитическую функцию по $f$] \hfill \newline
+    $\operatorname{Re} f = xe^x\cos y - (y + 1)e^x\sin y$, $f(0) = i$
+\end{problem}
+\begin{sol}
+    Проверить, что $\Delta u = 0$ \dots
+    \begin{gather*}
+        \begin{cases}
+            u'_x = v'_y \\ 
+            u'_y = -v'_x
+        \end{cases} \iff 
+        \begin{cases}
+            (e^x + e^x \cdot x) \cos y - e^x(y + 1) \sin y = v'_y \\ 
+            \sin y e^x x + (y + 1) \cos e e^x + \sin y e^x = v'_x 
+        \end{cases} \\ 
+        Ae^x x+ Be^x = v'_x \\ 
+        \int Ae^x dx = Ae^x x - A e^x +C \\ 
+        v = xe^x \sin y + (y + 1) \cos y e^x + g(y) \\ 
+        \cos y x e^x - (y + 1) \sin y e^x + \cos y e^x + g'(y) = v'_y
+    \end{gather*} 
+    $f = u + iv = (z + i)e^z$
+\end{sol}
+\begin{problem}[Найти аналитическую функцию по $f$] \hfill \newline
+    $\operatorname{Re} f = x \sin x \cosh y - y \sinh y \cos x$, $f(0) = 0$
+\end{problem}
+\begin{problem}
+    Пусть $u(x_0, y_0) = \frac{1}{2\pi r}\int\limits_{S_r(x_0, y_0)}u(x,y) dS$
+
+    $$\forall (x_0, y_0) \in \R, \forall r > 0, S_r(x_0, y_0) = \{(x, y) \in \R^2: \|(x, y) - (x_0, y_0)\| = r \}$$
+    Доказать, что $\Delta u = 0$
+\end{problem}
+\begin{problem}
+    Описать все гармонические функции (у которых область задания) в $\CC_+ : u = \varphi(x^2 + y^2)$, для некоторой функции $\varphi \in C^2(\R)$
+\end{problem}

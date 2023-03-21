@@ -103,13 +103,19 @@ $a \in \CC, f$ --- аналитична в проколотой окрестно
 
     \begin{gather*}
         - \left( \sum\limits_{k = 0}^{\infty} \frac{(b - a)^k}{(z - a)^{k + 1}} \right)' = (k + 1)\sum\limits_{k = 0}^{\infty} \frac{(b - a)^k}{(z - a)^{k + 2}} = \\ 
-        = \sum\limits_{-\infty}^{-2}c_n(z - a)^n, c_n = (b - a)(n \pm 1) \textrm{надо точно посчитать плюс тут или минус}
+        = \sum\limits_{-\infty}^{-2}c_n(z - a)^n, c_n = (b - a)(-n - 1)
     \end{gather*}
 \end{sol}
 
 \begin{exmpl}
-    Для $f(z) = z^3 \cos \left( \frac{1}{z - 2} \right)$: доказать, что $z = 2$ --- это полюс, найти его кратность, вычислить главную часть ряда Лорана.
+    Для $f(z) = z^3 \cos \left( \frac{1}{z - 2} \right)$: доказать, что $z = 2$ --- это \textbf{не полюс}, найти его кратность, вычислить главную часть ряда Лорана.
 \end{exmpl}
 \begin{sol}
-    
-\end{sol}
+    \begin{gather*}
+        f(z) = z^3 \sum\limits_0^{\infty}\frac{(-1)^k}{(z - 2)^{2k} (2k)!}\\ 
+        z^3 = b_3(z - 2)^3 + b_2(z - 2)^2 + b_1(z - 2) + b_0 = \\
+        = (z -2)^3 + b_2(z - 2)^2 + b_1(z - 2) + 8 \\
+        b_1 = 3 \cdot 2^2 = 12 \\ 
+        2\cdot b_2 = 3 \cdot 2 \cdot 2 \then b_2 = 6
+    \end{gather*}
+\end{sol}k

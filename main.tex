@@ -25,16 +25,21 @@
 \usepackage{verbatim}
 \usepackage{xcolor}
 \usepackage{xifthen}
+\usepackage{tikz}
+
 \pgfplotsset{compat=1.16}
 
 \hfuzz=6.41pt 
-
 \newcommand{\incfig}[2][1]{%
  \def\svgwidth{#1\columnwidth}
- \import{./figures/}{#2.pdf_tex}
+ \import{./hw/figures/}{#2.pdf_tex}
 }
 
 \pdfsuppresswarningpagegroup=1
+
+% macro for circled signs
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+\node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
 
 % counters and theorems
 \newcounter{theoremCnt}
@@ -104,7 +109,7 @@
 \addto\captionsrussian{\renewcommand\proofname{\normalfont\textsc{Доказательство}}}
 
 % some aliases
-\newcommand{\R}{\ensuremath \mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
 \newcommand{\Q}{\ensuremath \mathbb{Q}}
 \newcommand{\CC}{\ensuremath \mathbb{C}}
 \newcommand{\Z}{\ensuremath \mathbb{Z}}
@@ -131,10 +136,10 @@
 \DeclareMathOperator{\rk}{rk}
 \DeclareMathOperator{\diverg}{div}
 
+
 \title{Матан СП 2 курс (набор 2021). \\ Конспект практик}
-
-
 \begin{document}
+
 \maketitle
 Конспект практик по математическому анализу на втором курсе (четвертый семестры) СПбГУ МКН <<Современное программирование>> (набор 2021 года).
 \subsubsection*{Лектор}
@@ -145,6 +150,11 @@
 
 \import{practices}{01.tex}
 \import{practices}{02.tex}
-
+\import{practices}{03.tex}
+\import{practices}{05.tex}
+\import{practices}{07.tex}
+\import{practices}{08.tex}
+% !essential rewrite practise 08 from Tim's notes
+\import{practices}{09.tex}
 \end{document}
 

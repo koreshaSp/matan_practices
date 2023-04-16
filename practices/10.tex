@@ -1,0 +1,70 @@
+\section{Практика 9}
+\subsection{Лемма Жордана}
+\begin{df}
+    $f: \CC_+ \to \CC$ --- измеримая, $\sup\limits_{z \in \CC_+, |z| = R} |f(z)| \to 0$, при $R \to \infty$
+    \[\then \forall \; \alpha > 0: \; \oint\limits_{C_R}f(z)e^{i\alpha z}dz \to 0, \textrm{ при } R \to \infty, C_R=\{|z| = R \; | \; \Imaginary z > 0\}\]
+\end{df}
+\begin{exmpl}
+    $\oint\limits_{C_R}\cfrac{e^{iz}}{z}dz \to 0, R \to \infty, \cfrac{1}{z} \to 0, a = 1 > 0$
+\end{exmpl}
+\begin{proof}
+    \begin{gather*}
+        \bigg| \oint\limits_{C_R}f(z)e^{i \alpha z} dz \bigg| \leq M_R \int\limits_{0}^{\pi} \bigg| e^{i \alpha (R \cos t + i R \sin t)} \bigg| \cdot R dt \circled{$\leq$} \\ 
+        \int\limits_{0}^{\pi}f(R e^{it})e^{i\alpha R e^{it}} \cdot R i e^{it} dt \\ 
+        \bigg| e^{i \alpha(R \cos t + i R \sin t)}\bigg| = e^{-\alpha R \sin t} \\ 
+        \circled{$\leq$}M_R \cdot R \cdot \int\limits_{0}^{\pi}e^{-\alpha R \sin t}dt = 2 M_R \cdot R \cdot \int\limits_{0}^{\frac{\pi}{2}}e^{-\alpha R \sin t} dt \leq 2 M_R \cdot R \int\limits_{0}^{\frac{\pi}{2}}e^{-\frac{2 \alpha R t}{\pi} }dt = \\ 
+        = 2 M_R \cdot R \cfrac{e^{-\frac{2 \alpha R t}{\pi}}}{-\alpha R \frac{2}{\pi}} \Bigg|_0^{\pi} \leq 2M_R \cdot R \cfrac{e^{-\alpha R} \cdot \frac{2}{\pi} \cdot \frac{\pi}{2} - 1}{-\alpha R \frac{2}{\pi}} \leq 4M_R \cdot \frac{\pi}{2} \to 0
+    \end{gather*}
+\end{proof}
+\begin{exmpl}[посмотреть  у Димы]
+    $\int\limits_{\R}\cfrac{x \sin x}{x^2 + 2x + 10}dx = \Imaginary \left[ \int\limits_{\R}\cfrac{xe^{ix}}{x^2 + 2x + 10}dx \right]$
+\end{exmpl}
+\begin{exmpl}
+    $\int\limits_{0}^{\infty}\cfrac{\log x}{(x + 1)^3}dx$
+    \begin{gather*}
+        \int\limits_{I_+}\cfrac{\log z}{(z + 1)^3}dz \longrightarrow \int\limits_0^{\infty}\cfrac{\log x}{(x + 1)^3}dx \\ 
+        \int\limits_{I_-}\cfrac{\log z}{(z + 1)^3}dz = -\int\limits_0^{\infty}\cfrac{\log \left( x \cdot e^{(2\pi - \varepsilon)i} \right)}{(x \cdot e^{(2\pi - \varepsilon)i}+ 1)^3}dx + o(1) = -\int\limits_0^{\infty}\cfrac{\log x + 2\pi i}{(x + 1)^3}dx + o(1) \\ 
+    \end{gather*}
+    \incfig[0.4]{prac10pic1} % научите делать обтекание картинки текстом .. 
+    \begin{gather*}
+        \oint\limits_{C_R} + \oint\limits_{C_{\varepsilon}} + \int\limits_{I_+} + \int\limits_{I_-} = -\int\limits_0^{\infty}\cfrac{2 \pi i}{(x + 1)^3} + o(1) + \underbrace{\oint\limits_{C_R} + \oint\limits_{C_{\varepsilon}}}_{\to 0} \\ 
+        \begin{gathered}
+            h = \cfrac{\log^2 z}{(z + 1)^3} \\
+            \int\limits_{I_+}h \longrightarrow \int\limits_0^{\infty}\cfrac{\log^2 x}{(x + 1)^3}dx \\ 
+            \int\limits_{I_-}h = -\int\limits_0^{\infty}\cfrac{\log^2 x + 4\pi i \log x - 4\pi^2}{(x + 1)^3}dx
+        \end{gathered}\\
+        2\pi i \cdot \operatorname{res}_{-1}h = \oint\limits_{C_R} + \oint\limits_{C_{\varepsilon}} + \int\limits_{I_+} + \int\limits_{I_-} = -\int\limits_0^{\infty}\cfrac{4\pi i \log x - 4\pi^2}{(x + 1)^3}dx + o(1) = \\ 
+        = -4\pi i \int\limits_0^{\infty}\cfrac{\log x}{(x + 1)^3} + \underbrace{4\pi^2\int\limits_0^{\infty}\cfrac{1}{(x + 1)^3}dx}_{= 2\pi^2} + o(1) \\ 
+        \log^2z  = a_0 + a_1(z + 1) + a_2(z + 1)^2 + \dots \\ 
+        h = \cfrac{c_{-3}}{(z + 1)^3} + \cfrac{c_{-2}}{(z + 1)^2} + \underbrace{\cfrac{c_{-1}}{z + 1}}_{= \operatorname{res}_{-1}h} + \dots \then \operatorname{res}_{-1}h = a_2 \\ 
+        \left( \log^2(z) \right)'' = \dots = \cfrac{2}{z^2}(1 - \log z) \then a_2 = \cfrac{(\log^2 z)''}{2!} \Bigg|_{z = -1} = 1 - \log(-1) = 1 - \pi i \\ 
+        2\pi i \cdot \operatorname{res}_{-1} h = 2 \pi i \cdot (1 - \pi i) = 2 \pi i + 2 \pi^2 \\ 
+        \then \int\limits_0^{\infty}\cfrac{\log x}{(x + 1)^3} dx = -\cfrac{2\pi i}{4 \pi i} = -\cfrac{1}{2}
+    \end{gather*}
+\end{exmpl}
+\begin{exmpl}
+    $\int\limits_{0}^{\infty}\sin (x^2)dx = \int\limits_0^{\infty}\cos (x^2) dx$?
+    \begin{gather*}
+        f(z) = e^{-z^2}
+    \end{gather*}
+    \incfig[0.4]{prac10pic2}    
+    \begin{gather*}
+        0 = \int\limits_{\Gamma}f(z) dz = \int\limits_{I_1} + \int\limits_{C_R} + \int\limits_{I_2} \\
+        \int\limits_{I_1}f(z)dz \longrightarrow \int\limits_0^{\infty}e^{-x^2}dx = \cfrac{\sqrt{\pi}}{2} \\ 
+        \int\limits_{I_2} = -\int\limits_0^R e^{-(t \cdot e^{\frac{i \pi}{4}})^2} \cdot e^{\frac{i \pi}{4}} dt = -e^{\frac{i \pi}{4}} \cdot \int\limits_0^R e^{-it^2}dt = -\int\limits_0^R e^{-i (t^2 - \frac{\pi}{4})}dt \\
+        \int\limits_{\Gamma}e^{-z^2}dz = \int\limits_{0}^{\infty}e^{-t^2}dt + \int\limits_{0}^{\infty}e^{-i(t^2 - \frac{\pi}{4})}dt \iff \int\limits_{0}^{\infty}e^{-i(t^2 - \frac{\pi}{4})}dt = \cfrac{\sqrt{\pi}}{2} \then \\ 
+        \then \begin{cases}
+            \int\limits_0^{\infty}\cos \left(t^2 - \frac{\pi}{4} \right)dt = \cfrac{\sqrt{\pi}}{2} \\ 
+            - \int\limits_0^{\infty}\sin \left(t^2 - \frac{\pi}{4} \right)dt = 0
+        \end{cases} \iff \begin{cases}
+            \int\limits_{0}^{\infty}\cfrac{\cos (t^2)}{\sqrt{2}} dt + \int\limits_{0}^{\infty}\cfrac{\sin (t^2)}{\sqrt{2}} dt =\cfrac{\sqrt{\pi}}{2} \\ 
+            \int\limits_{0}^{\infty}\cfrac{\sin (t^2)}{\sqrt{2}} dt - \int\limits_{0}^{\infty}\cfrac{\cos (t^2)}{\sqrt{2}} dt = 0
+        \end{cases} \\ 
+        \then \begin{cases}
+            \int\limits_{0}^{\infty} \cos (t^2) dt = \cfrac{\sqrt{\pi}}{2 \sqrt{2}} \\ 
+            \int\limits_{0}^{\infty} \sin  (t^2) dt = \cfrac{\sqrt{\pi}}{2 \sqrt{2}}
+        \end{cases} \\ 
+        \bigg| \int\limits_{C_R} e^{-z^2}\bigg| \leq \max\limits_{\varphi \in [0; \frac{\pi}{4}]} \cfrac{\pi}{4} \cdot \bigg| e^{-R^2(\cos \varphi + i \sin \varphi)^2}\bigg| = \cfrac{R \pi}{4}e^{-R^2(\cos 2\varphi)} \not\to 0 \\ 
+        \int\limits_{0}^{\frac{\pi}{4}}e^{-R^2 \cos 2\varphi}d\varphi \to 0 \textrm{ --- из леммы Жордана}
+    \end{gather*}
+\end{exmpl}

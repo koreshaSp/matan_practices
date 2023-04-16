@@ -1,0 +1,47 @@
+\section{Вычеты}
+\begin{df}
+    Вычет в точке 
+    \begin{itemize}
+        \item $a \in \CC$ --- это коэффициент $c_{-1}$ ряда Лорана в кольце $0 < |z - a| < \varepsilon, |z| > R$
+        \item $a = \infty$ --- это коэффициент $-c_{-1}$
+    \end{itemize}
+\end{df}
+\begin{claim}
+    Пусть $f$ --- аналитическая в кольце $0 < |z - a| < \varepsilon$ такая что \newline
+    $f(z) = \cfrac{g(z)}{(z - a)^n}, n \geq 1$, $g$ --- аналитическая в $|z - a| < \varepsilon$
+
+    Найдем формулу вычета в точке $a$ в терминах производной: 
+    \begin{gather*}
+        \cfrac{g(z)}{(z - a)^n} = \cfrac{1}{(z - a)^n}\sum\limits_{k = 0}^{\infty}b_k(z - a)^k = \sum\limits_{j \in \Z} c_j(z - a)^j \\ 
+        c_{-1} = b_{n - 1} = \cfrac{g^{(n - 1)}(a)}{(n - 1)!} \impliedby \begin{cases}
+            g = \sum\limits_{k = 0}^{\infty} b_k(z - a)^k \\ 
+            g^{(0)}(a) = b_0 \\ 
+            g^{(1)}(a) = b_1 \\ 
+            g^{(2)}(a) = 2 \cdot 1 \cdot b_2 \\ 
+            \cdots
+        \end{cases}
+    \end{gather*}
+\end{claim}
+\section{Формула Коши}
+\begin{df}
+    Формула Коши. 
+    \begin{gather*}
+        \oint\limits_{\partial \Omega}f(z) dz = 2 \pi \cdot i \cdot \sum\limits_{a \in \Omega \textrm{ и } a \textrm{ --- полюс } f} \operatorname{res}_a f
+    \end{gather*}
+    \begin{itemize}
+        \item $\operatorname{res}_a f$ --- вычет функции $f$ в точке $a$
+        \item $\partial \Omega$ --- замкнутый контур (обход делается против часовой стрелки)
+    \end{itemize}
+\end{df}
+\begin{exmpl}
+    \begin{gather*}
+        \int\limits_{\R}\cfrac{dx}{x^2 + 1} = \arctan(-\infty) - \arctan(\infty) = \pi \\
+        f(z) = \cfrac{1}{z^2 + 1}, \gamma_R = [-R, R] \cup C_R \\ 
+        \int\limits_{\gamma_R} \cfrac{dz}{z^2 + 1} = 2\pi i \operatorname{res}_i \left( \cfrac{1}{z^2 + 1} \right) \circled{=} \\ 
+        [ \textrm{ тут мы рассматриваем только } i \textrm{ т.к. только она лежит в } \Omega] \\ 
+        \operatorname{res}_i\left( \cfrac{1}{z^2 + 1} \right) = \operatorname{res} \left( \cfrac{\frac{1}{z + i}}{z - i} \right) = \operatorname{res}\left( \cfrac{g(z)}{z - i} \right) = \cfrac{g^{(0)}(i)}{1} = \cfrac{1}{2i} \\ 
+        \circled{=} \; 2 \pi i \cfrac{1}{2i} = \pi = \int\limits_{[-R; R]}f(z)dz + \int\limits_{C_R}f(z)dz \\ 
+        \textrm{осталось показать } \int\limits_{C_R}f(z)dz \to 0 \\ 
+        \bigg|\int\limits_{C_R} \cfrac{dz}{z^2 + 1}\bigg| \leq \cfrac{\pi R}{R^2 - 1} \to 0
+    \end{gather*}
+\end{exmpl}

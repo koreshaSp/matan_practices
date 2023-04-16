@@ -1,0 +1,53 @@
+\section{Интегралы по контуру. Приложения аналитических функций к вещественному анализу}
+\begin{remrk}
+    \begin{gather*}
+        \oint\limits_{\partial \Omega}f(z) dz = 2 \pi i \cdot \sum\limits_{z_k } res_{z_k}f, z_k \textrm{ --- вычет }  f \textrm{ в точке } z_k \in \Omega
+    \end{gather*}
+\end{remrk}
+\begin{exmpl}
+    \begin{gather*}
+        \int\limits_{\R} \cfrac{dx}{x^4 + 1} \\ 
+        z^4 + 1 = 0 \then z^4 = -1 \then e^{4 i t} = e^{i\pi} \then \begin{cases}
+            t = \cfrac{  \pi}{4} \\ 
+            t = \cfrac{3 \pi}{4} \\
+            t = \cfrac{5 \pi}{4} \\ 
+            t = \cfrac{7 \pi}{4}
+        \end{cases}\\
+        \int\limits_{I_R + C_R}\cfrac{dz}{z^4 + 1} = 2\pi i \left( res_{e^{\frac{i\pi}{4}}}F + res_{e_{\frac{3i\pi}{4}}}F \right) \textrm{ берем точки, которые лежат в } \Omega\\ 
+        \operatorname{res}_{e^{\frac{i\pi}{4}}}\left( \cfrac{1}{z^4 + 1} \right) = \operatorname{res}_{e^{\frac{i\pi}{4}}}\left( \cfrac{1}{(z - e^{\frac{i\pi}{4}}) \cdot (z - e^{\frac{3i\pi}{4}}) \cdot (z - e^{\frac{5i\pi}{4}}) \cdot (z - e^{\frac{7i\pi}{4}})} \right) = \operatorname{res}\left( \cfrac{w(z)}{(z - e^{\frac{i\pi}{4}})} \right) \\
+        w(e^{\frac{i\pi}{4}}) = \cfrac{1}{(z - e^{\frac{3i\pi}{4}}) \cdot (z - e^{\frac{5i\pi}{4}}) \cdot (z - e^{\frac{7i\pi}{4}})} = \cfrac{1}{e^{\frac{3i\pi}{4}} \cdot (- 1 - i) \cdot (-2i) \cdot (-i + 1)} = \cfrac{1}{4e^{\frac{3i\pi}{4}}} \\
+        \implies \operatorname{res}_{e^{\frac{i\pi}{4}}} = \cfrac{1}{4e^{\frac{3i\pi}{4}}} \\
+        \operatorname{res}_{e^{\frac{3i\pi}{4}}} \left( \cfrac{1}{z^4 + 1} \right) = \operatorname{res}\left( \cfrac{g(z)}{z - e^{\frac{3i\pi}{4}}} \right) = [\textrm{ делаем то же самое, что и для } e^{\frac{i\pi}{4}}] \\
+        g(e^{\frac{3i\pi}{4}}) = \cfrac{1}{e^{\frac{i\pi}{4}} \cdot (i - 1) \cdot (i + 1) \cdot 2i} = -\cfrac{1}{4 e^{\frac{3i\pi}{4}}}\\
+    \end{gather*}
+    Либо я не могу найти тут ошибку, либо на практике неправильно получили правильный ответ...
+\end{exmpl}
+\begin{exmpl}
+    \begin{gather*}
+        \int\limits_{\R}\cfrac{\cos x}{x^2 + 1}dx \\ 
+        \textrm{Предлагается сначала рассмотреть } f= \cfrac{e^{iz}}{z^2 + 1} \textrm{ и её особые точки} \\ 
+        (z^2 + 1) = (z + i) \cdot (z - i) \then \textrm{ --- полюсы порядка 1} \\ 
+        \int\limits_{I_R + C_R} f dx = 2 i \pi \operatorname{res}_i f \\
+        \operatorname{res}_i f = \operatorname{res}\left( \cfrac{w(z)}{z - i} \right) \circled{=} \\ 
+        w(z) = \cfrac{e^{iz}}{z + i}, w(i) = \cfrac{1}{2ei} = \cfrac{-i}{2e} \\
+        \circled{=}\; \cfrac{-i}{2e} \\ 
+        \begin{cases*}
+            \int\limits_{I_R + C_R}f dx = 2\pi i \cdot \cfrac{-i}{2e} = \cfrac{\pi}{e} \\ 
+            \bigg| \int\limits_{C_R}f\bigg| \leq \cfrac{\pi R}{R^2 - 1} \to 0
+        \end{cases*} \then \int\limits_{\R}f = \cfrac{\pi}{e}\\
+        e^{iz} = e^{i(a + bi)} = e^{ia} \cdot e^{-b}\\
+        \int\limits_{\R}\cfrac{e^{iz}}{1 + z^2} \; dz = \cfrac{\pi}{e} = \operatorname{Re} \cfrac{\pi}{e} = \int\limits_{\R} \operatorname{Re} \cfrac{e^{iz}}{1 + z^2}dz = \int\limits_{\R}\cfrac{\cos x}{x^2 + 1}dx \\ 
+        \then \int\limits_{\R}\cfrac{\cos x}{x^2 + 1}dx = \cfrac{\pi}{e}
+    \end{gather*}
+\end{exmpl}
+\begin{exmpl}
+    \begin{gather*}
+        \int\limits_{\R}\cfrac{\sin x}{x}dx \\ 
+        \int\limits_{I_R + C_R}\cfrac{e^{ix}}{x}dx \\ 
+        \int\limits_{\gamma_{R, \varepsilon}}\cfrac{e^{iz}}{z}dz = 0, \textrm{ т.к. 0 --- единственная особая точка и она не лежит в контуре} \\
+        \int\limits_{\gamma_{R, \varepsilon}}\cfrac{e^{iz}}{z}dz = \underbrace{\int\limits_{C_R}\cfrac{e^{iz}}{z}dz}_{=A_1} + \int\limits_{[-R, \varepsilon]}\cfrac{e^{iz}}{z}dz + \underbrace{\int\limits_{C_\varepsilon}\cfrac{e^{iz}}{z}dz}_{=A_2} + \int\limits_{[\varepsilon, R]}\cfrac{e^{iz}}{z}dz\\
+        0 = Im (A_1 + A_2) + \int\limits_{[-R, R] \setminus [-\varepsilon, \varepsilon]}\cfrac{\sin x}{x}dx \underset{R \to \infty \; \varepsilon \to 0}{\longrightarrow} \int\limits_{\R}\cfrac{\sin x}{x}dx \\ 
+        g = \cfrac{e^{iz}}{z} \then \oint\limits_{C_\varepsilon}g dz = \oint\limits_{C_\varepsilon}\left( \cfrac{1}{z} + i + O(z) \right) dz \underset{\varepsilon \to 0}{ = } \int\limits_{C_\varepsilon}\cfrac{dz}{z} + o(1) = \\ 
+        = \int\limits_{0}^{\pi}\cfrac{\varepsilon i e^{it}}{\varepsilon e^{it}} dt + o(1) = \pi i + o(1)
+    \end{gather*}
+\end{exmpl}
